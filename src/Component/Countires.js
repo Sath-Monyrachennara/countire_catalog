@@ -4,13 +4,14 @@ import Modal from './Modal';
 
 const Countires = ({data, datas, index, page}) => {
     const [key, setKey] = useState('');
+    console.log(page);
     // console.log(page);
 
   return (
     <>
         {/* For Modal Pop up */}
         {key.length !== 0? <Modal keys={key} data={data}  />: ''}
-        {page ==1? (data.indexOf(datas) < 125 &&
+        {(page ==1) || (page ===undefined)? (data.indexOf(datas) < 125 &&
             <div className='flex flex-col align-middle justify-center text-gray-700 leading-8 px-2 max-w-xs border-2 border-gray-300 rounded-md py-4 px-5 my-5 mx-1'>
                 <img src={datas.flags.png} className='rounded lg:w-72 lg:h-36' alt="" />
                 <div className='px-2'>
@@ -45,7 +46,7 @@ const Countires = ({data, datas, index, page}) => {
                 <div className='px-2'>
                     <div className='flex flex-row'>
                         <p className='mr-9 pr-9' onClick={()=> setKey(index)} key={index} >{datas.name.official}</p>
-                        <p>{datas.idd.root}{datas.idd.suffixes.slice(0, 4)}</p>
+                        <p>{datas.idd.root}{datas.idd.suffixes}</p>
                     </div>
                     
                     <div className='flex flex-row'>
